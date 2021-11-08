@@ -1,0 +1,3 @@
+# Kindness Scanner
+
+# Setup
