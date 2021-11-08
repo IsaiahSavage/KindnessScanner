@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Kindness Scanner</title>
+		<title><?php echo($ks_config['title']); ?></title>
 	</head>
 	<body>
 		<h1><?php echo($ks_config['title']); ?></h1>
