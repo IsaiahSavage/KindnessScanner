@@ -5,7 +5,7 @@ include_once('header/da_user.php');
 echo("Setting up an admin user...\nYou will be able to confirm this information at the end.\n");
 
 /* Read a line from the input with a prompt, with the input hidden if possible.
-Only works on *nix systems with `stty`. */
+Input hiding only works on *nix systems with `stty`. */
 function readline_password(string $prompt) {
 	// Save old TTY style.
 	$old_style = shell_exec('stty -g');
