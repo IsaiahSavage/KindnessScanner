@@ -1,6 +1,6 @@
 <?php
 
-include('header.php');
+include_once('header.php');
 
 echo("Creating database...\n");
 
@@ -8,7 +8,7 @@ $ks_db->t_begin();
 
 try {
 	/* Tables. */
-	$ks_db->query('CREATE TABLE registered_user(user_id SERIAL PRIMARY KEY, name TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL, privilege TEXT NOT NULL)');
+	$ks_db->query('CREATE TABLE registered_user(user_id SERIAL PRIMARY KEY, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, privilege TEXT NOT NULL)');
 	$ks_db->query('CREATE TABLE card(card_id SERIAL PRIMARY KEY, creation_latitude NUMERIC(9,6) NOT NULL, creation_longitude NUMERIC(9,6) NOT NULL, creation_time TIMESTAMP WITH TIME ZONE NOT NULL)');
 	$ks_db->query('CREATE TABLE scan(scan_id SERIAL PRIMARY KEY, latitude NUMERIC(9,6) NOT NULL, longitude NUMERIC(9,6) NOT NULL, time TIMESTAMP WITH TIME ZONE NOT NULL, description TEXT NOT NULL)');
 	$ks_db->query('CREATE TABLE r_u_card(card_id INTEGER PRIMARY KEY, user_id INTEGER)');

@@ -17,11 +17,11 @@ $ks_config = array(
 );
 
 // Include user-specified configuration.
-include('config.php');
+include_once('config.php');
 
 /* Include database wrappers. */
-include('header/db.php');
-include('header/db_postgresql.php');
+include_once('header/db.php');
+include_once('header/db_postgresql.php');
 
 // Connect to the database.
 $ks_db = new KSDBPSQL($ks_config['db_host'], $ks_config['db_port'], $ks_config['db_name'], $ks_config['db_user'], $ks_config['db_password']);
