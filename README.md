@@ -15,3 +15,10 @@ $ ln -s `realpath web` /var/www/html/my/web/path
 ```
 
 The project can then be run from `http://my.example.com/my/web/path`
+
+## Low-level Administration
+All administration scripts are contained in the `scripts` directory. To run these, `cd` to the `web` directory and run them as:
+
+```
+$ php ../scripts/info.php # Replace info.php with appropriate script.
+```
