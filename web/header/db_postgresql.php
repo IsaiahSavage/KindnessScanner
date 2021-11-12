@@ -20,6 +20,11 @@ class KSDBPSQL
 		pg_close($this->conn);
 	}
 
+	/* Transaction wrappers. */
+	public function t_begin() { $this->query("BEGIN"); }
+	public function t_rollback() { $this->query("ROLLBACK"); }
+	public function t_commit() { $this->query("COMMIT"); }
+
 	/* Query with parameters. Placeholders are $1, $2, ..., $n
 	Raises KSSQLException on failure. */
 	public function query(string $query, array $params = array()) {

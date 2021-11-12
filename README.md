@@ -22,3 +22,12 @@ All administration scripts are contained in the `scripts` directory. To run thes
 ```
 $ php ../scripts/info.php # Replace info.php with appropriate script.
 ```
+
+These scripts will use the settings from `config.php`.
+
+### Creating the database
+From with the `web` directory and with an appropriate `config.php`, run the `create_db.php` script:
+
+```
+$ php ../scripts/create_db.php
+```
