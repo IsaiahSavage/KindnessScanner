@@ -47,7 +47,7 @@ printf("Name: %s\nE-mail: %s\n", $name, $email);
 $ok = readline("Does this look OK? (y/n) ");
 if(in_array(strtolower($ok), array('yes', 'y'))) {
 	echo("Adding user...\n");
-	ks_da_user_add(array(
+	ks_da_user_add($ks_db, array(
 		'name' => $name,
 		'email' => $email,
 		'password' => $password,
