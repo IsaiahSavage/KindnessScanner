@@ -19,14 +19,9 @@ $ks_config = array(
 // Include user-specified configuration.
 include('config.php');
 
-class KSDBPSQL
-{
-	protected $conn;
+/* Include database wrappers. */
+include('header/db.php');
+include('header/db_postgresql.php');
 
-	public function __construct(string $host, int $port, string $database, string $user, string $password) {
-		$dbs = sprintf("host='%s' port='%d' dbname='%s' user='%s' password='%s'", $host, $port, $database, $user, $password);
-		$this->conn = pg_connect($dbs) || die('Could not connect to database: ' . $dbs);
-	}
-};
-
+// Connect to the database.
 $ks_db = new KSDBPSQL($ks_config['db_host'], $ks_config['db_port'], $ks_config['db_name'], $ks_config['db_user'], $ks_config['db_password']);
