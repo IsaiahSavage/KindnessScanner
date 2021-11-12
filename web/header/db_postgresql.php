@@ -3,12 +3,14 @@
 // PostgreSQL connection.
 class KSDBPSQL
 {
+	protected $conn_id;
 	protected $conn;
 
 	/* Connect to the database with the appropriate parameters.
 	Raises ErrorException on failure. */
 	public function __construct(string $host, int $port, string $database, string $user, string $password) {
-		$dbs = sprintf("host='%s' port='%d' dbname='%s' user='%s' password='%s'", $host, $port, $database, $user, $password);
+		$this->conn_id = sprintf("host='%s' port='%d' dbname='%s' user='%s'", $host, $port, $database, $user);
+		$dbs = sprintf("%s password='%s'", $this->conn_id, $password);
 		$this->conn = pg_connect($dbs);
 		if(!$this->conn)
 			die('Could not connect to database: ' . $dbs);
