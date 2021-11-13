@@ -1,13 +1,23 @@
-<?php include('header.php'); ?>
+<?php 
+include_once('header.php');
+$card_id = isset($_GET["card_id"]) ? htmlspecialchars($_GET["card_id"]) : '';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-		<title><?php echo($ks_config['title'] . ' - New Scan'); ?></title>
+		<title><?php echo $ks_config['title'] . ' - New Scan'; ?></title>
 	</head>
 	<body>
 		<h1>Submit a Scan</h1>
-        <form action="scan.php" method="post">
+        <!-- Card ID tied to a card's QR code -->
+        <!-- Example: my.website.com/web/scan.php?card_id=1032 -->
+        <!-- Perhaps check for manually-injected card_id:
+             if (isset($_GET["source"]) && $_GET["source"] == "qr") {...} 
+             or use some sort of check for a specific format
+        -->
+        <h3>Card ID: <?php echo $card_id ?></h3>
+        <form action="scan_confirm.php?card_id=<?php echo $card_id ?>" method="post">
             What did the person do for you?<br>
             <textarea name="input_act" id="input_act" cols="30" rows="10"></textarea><br>
             What did this act mean to you?<br>
@@ -16,39 +26,3 @@
         </form>
 	</body>
 </html>
-
-<?php 
-        $input_act = $input_meaning = "";
-
-        if (isset($_POST["input_act"], $_POST["input_meaning"])) {
-            $input_act = format_data($_POST["input_act"]);
-            $input_meaning = format_data($_POST["input_meaning"]);
-            $timestamp = build_timestamp();
-            // TODO: Add location data retrieval
-            //  - Data will need to be collected in JS due to limitations of server-side code,
-            //    then collected/set via POST by this block.
-        }
-
-        // Format data for submission to DB
-        function format_data($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
-
-        // Build timestamp for submission
-        function build_timestamp() {
-            $date_time = date('Y-m-d G:i:s') . getUTCOffset(date_default_timezone_get());
-            return $date_time;
-        }
-
-        // Convert to UTC offset for use in DB queries
-        function getUTCOffset($timezone)
-        {
-            $current = timezone_open($timezone);
-            $utcTime = new \DateTime('now', new \DateTimeZone('UTC'));
-            $offsetInSecs = $current->getOffset($utcTime);
-            $hoursAndSec = gmdate('H:i', abs($offsetInSecs));
-            return stripos($offsetInSecs, '-') === false ? "+{$hoursAndSec}" : "-{$hoursAndSec}";
-        }  
