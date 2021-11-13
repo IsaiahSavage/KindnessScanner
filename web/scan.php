@@ -51,6 +51,4 @@
             $offsetInSecs = $current->getOffset($utcTime);
             $hoursAndSec = gmdate('H:i', abs($offsetInSecs));
             return stripos($offsetInSecs, '-') === false ? "+{$hoursAndSec}" : "-{$hoursAndSec}";
-        }
-
-    
+        }  
