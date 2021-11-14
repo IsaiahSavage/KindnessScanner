@@ -25,3 +25,6 @@ include_once('header/db_postgresql.php');
 
 // Connect to the database.
 $ks_db = new KSDBPSQL($ks_config['db_host'], $ks_config['db_port'], $ks_config['db_name'], $ks_config['db_user'], $ks_config['db_password']);
+
+/* Establish the session. */
+include_once('header/session.php');

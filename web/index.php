@@ -6,6 +6,15 @@
 		<title><?php echo($ks_config['title']); ?></title>
 	</head>
 	<body>
-		<h1><?php echo($ks_config['title']); ?></h1>
+		<a href='login.php'>login</a>
+		<a href='logout.php'>logout</a>
+		<?php
+		if($ks_logged_in_user) {
+			echo("You are logged in, " . htmlentities($ks_logged_in_user['name']));
+		}
+		else {
+			echo("You are not logged in.");
+		}
+		?>
 	</body>
 </html>
