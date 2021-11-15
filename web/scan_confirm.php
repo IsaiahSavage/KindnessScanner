@@ -7,6 +7,9 @@ function construct_data() {
     $input_act = format_data($_POST["input_act"]);
     $input_meaning = format_data($_POST["input_meaning"]);
     $timestamp = build_timestamp();
+    $latitude = (float) format_data($_POST["latitude"]);
+    $longitude = (float) format_data($_POST["longitude"]);
+
     // TODO: Add location data retrieval
     //  Data will need to be collected in JS due to limitations of server-side code,
     //    then collected/set via POST by this block.
@@ -82,7 +85,7 @@ function show_error()
     </head>    
     <body>
         <?php
-            if (isset($_POST["input_act"], $_POST["input_meaning"])) {
+            if (isset($_POST["input_act"], $_POST["input_meaning"], $_POST["latitude"], $_POST["longitude"])) {
                 try{
                     construct_data();
                     // submit_data();
