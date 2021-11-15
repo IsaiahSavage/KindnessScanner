@@ -3,17 +3,18 @@ include_once('header.php');
 
 $input_act = $input_meaning = "";
 
-if (isset($_POST["input_act"], $_POST["input_meaning"]), $_POST["latitude"], $_POST["longitude"]) {
+function construct_data() {
     $input_act = format_data($_POST["input_act"]);
     $input_meaning = format_data($_POST["input_meaning"]);
     $timestamp = build_timestamp();
-    
+    $latitude = (float) format_data($_POST["latitude"]);
+    $longitude = (float) format_data($_POST["longitude"]);
+
     // TODO: Add location data retrieval
     //  Data will need to be collected in JS due to limitations of server-side code,
     //    then collected/set via POST by this block.
-    $latitude = (float) format_data($_POST["latitude"]);
-    $longitude = (float) format_data($_POST["longitude"]);
-    // submit_data($latitude, $longitude, $timestamp, $input_act);
+    // $latitude = ;
+    // $longitude = ;
 }
 
 // Format data for submission to DB
@@ -43,29 +44,58 @@ function get_UTC_offset($timezone)
 /*
 // Insert user data into DB
 // Currently under construction due to lack of lat./long. values
-function submit_data(float $submission_latitude, float $submission_longitude, string $submission_time, string $submission_act)
+function submit_data()
 {
     $ks_db->begin();
 
     try {
-        $ks_db->query('INSERT INTO scan (latitude, longitude, time, description) VALUES ($1, $2, TIMESTAMP WITH TIME ZONE $3, $4)', $submission_latitude, $submission_longitude, $submission_time, $submission_act);
-        $ks_db->query('INSERT INTO card_scan (card_id, scan_id) VALUES ($1, $2)', $_GET["card_id"], $scan_id);
+        $ks_db->query('INSERT INTO scan (latitude, longitude, time, description) VALUES ($1, $2, TIMESTAMP WITH TIME ZONE $3, $4)', [$latitude, $longitude, $timestamp, $input_act]);
+        $scan_id = $ks_db->query('SELECT CURRVAL('scan_scan_id_seq')');
+        $ks_db->query('INSERT INTO card_scan (card_id, scan_id) VALUES ($1, $2)', [$_GET["card_id"], $scan_id]);
         $ks_db->t_commit();
     } catch (Exception $e) {
         $ks_db->t_rollback();
         throw $e;
     }
 } */
+
+function show_confirmation()
+{
+    ?>
+        <h1>Thank you for your submission!</h1>
+        <h3>Your information has been submitted. Your next task: pass it on.</h3>
+        <button><a href="index.php">View Map</a></button>
+    <?php
+}
+
+function show_error()
+{
+ ?>
+    <h1>Oops!</h1>
+    <h3>It seems that there was an issue submitting your scan. Please try submitting the information again.</h3>
+    <button><a href="scan.php">Go Back</a></button>
+ <?php
+}
 ?>
 
 <!DOCTYPE html> 
 <html lang="en">
     <head>
-        <title><?php echo($ks_config['title'] . ' - New Scan'); ?></title>
+        <title><?php echo $ks_config['title']; ?> | New Scan</title>
     </head>    
     <body>
-        <h1>Thank you for your submission!</h1>
-        <h3>Your information has been submitted. Your next task: pass it on.</h3>
-        <button><a href="index.php">View Map</a></button>
+        <?php
+            if (isset($_POST["input_act"], $_POST["input_meaning"], $_POST["latitude"], $_POST["longitude"])) {
+                try{
+                    construct_data();
+                    // submit_data();
+                    show_confirmation();
+                } catch(Exception $e) {
+                    show_error();
+                }
+            } else {
+                show_error();
+            }
+        ?>
     </body>
 </html>
