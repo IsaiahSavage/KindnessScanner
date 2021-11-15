@@ -13,8 +13,8 @@ function show_form()
             if (isset($_GET["source"]) && $_GET["source"] == "qr") {...} 
             or use some sort of check for a specific format
         -->
-        <h3>Card ID: <?php echo $card_id ?></h3>
-        <form onload="getLocation()" action="scan_confirm.php?card_id=<?php echo $card_id ?>" method="post">
+        <h3>Card ID: <?php GLOBAL $card_id; echo $card_id ?></h3>
+        <form onload="getLocation()" action="scan_confirm.php?card_id=<?php GLOABL $card_id; echo $card_id ?>" method="post">
             What did the person do for you?<br>
             <textarea name="input_act" id="input_act" cols="30" rows="10"></textarea><br>
             What did this act mean to you?<br>
