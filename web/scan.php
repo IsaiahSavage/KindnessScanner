@@ -42,6 +42,19 @@ function show_form()
     <?php
 }
 
+function show_redirect() 
+{
+    ?>
+        <h1>Welcome!</h1>
+        <h3>It seems this card is unregistered. You'll need to be signed in to activate this card.</h3>
+        <span>
+            <button><a href="login.php">Sign In</a></button>
+            <!-- Link below will need to be changed to registration page once it is created. -->
+            <button><a href="login.php">Create an Account</a></button>
+        </span>
+    <?php
+}
+
 function show_error()
 {
  ?>
@@ -60,14 +73,20 @@ function show_error()
 		
         <?php 
             try {
-                $results = $ks_db->query('SELECT card_id FROM card WHERE card_id = $1 AND card_id IN (select card_id from r_u_card)', [$card_id]);
+                // Check for registered card
+                $results = $ks_db->query('SELECT card_id FROM r_u_card WHERE card_id = $1', array($card_id));
                 if (!empty($results)) {
                     // Card is already registered; add form to page
                     show_form();
                 } else {
-                    // TODO: check for card_id IN card AND NOT IN r_u_card
-                    // Add error message to page
-                    show_error();
+                    // Check for unregistered, but valid, card
+                    $results = $ks_db->query('SELECT card_id FROM card WHERE card_id = $1', array($card_id));
+                    if (!empty($results)) {
+                        // Send user to sign up/in page w/ card_id passed in URL
+                        show_redirect();
+                    } else {
+                        show_error();
+                    }  
                 }
             } catch (Exception $e) {
                 show_error();
