@@ -3,10 +3,11 @@
 include_once('header.php');
 
 /* Add a new user. Accepts array of params with keys:
-name, email, password, privilege */
+name, email, password, privilege
+Returns new user's ID. */
 function ks_da_user_add($ks_db, array $params) {
-	$ks_db->query('INSERT INTO registered_user (name, email, password, privilege) VALUES ($1, $2, $3, $4)',
-		array($params['name'], $params['email'], password_hash($params['password'], PASSWORD_DEFAULT), $params['privilege']));
+	return $ks_db->query_next($ks_db->query('INSERT INTO registered_user (name, email, password, privilege) VALUES ($1, $2, $3, $4) RETURNING user_id',
+		array($params['name'], $params['email'], password_hash($params['password'], PASSWORD_DEFAULT), $params['privilege'])))[0];
 }
 
 /* Verifies login information of e-mail and password.
