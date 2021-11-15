@@ -4,13 +4,19 @@
 All files that must be served are in the `web` directory.
 
 ## Initial Setup
-Place the `web` directory to be served by your web server. This can be copied or symbolically linked.
+You must run the `get_composer.sh` or otherwise download [Composer](https://getcomposer.org/download/).
+Then run `./composer.phar update` to download the necessary dependencies.
+
+Place the `web` directory to be served by your web server.
+This must either be symbolically linked, or it can be copied and the original project directory specified in the configuration file.
 
 You must then copy `config.example.php` into the `web` directory as `config.php`, and edit it according to your setup.
 
 ### Example
 From within the project directory:
 ```
+$ ./get_composer.sh
+$ ./composer.phar update
 $ ln -s `realpath web` /var/www/html/my/web/path
 ```
 

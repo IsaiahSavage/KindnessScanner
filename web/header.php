@@ -14,10 +14,14 @@ set_error_handler("exception_error_handler");
 // Default configuration.
 $ks_config = array(
 	'title' => 'Kindness Scanner',
+	'project_dir' => realpath(__DIR__ . '/..'),
 );
 
 // Include user-specified configuration.
 include_once('config.php');
+
+/* Include composer libraries. */
+require_once $ks_config['project_dir'] . '/vendor/autoload.php';
 
 /* Include database wrappers. */
 include_once('header/db.php');
