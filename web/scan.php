@@ -13,8 +13,8 @@ function show_form()
             if (isset($_GET["source"]) && $_GET["source"] == "qr") {...} 
             or use some sort of check for a specific format
         -->
-        <h3>Card ID: <?php GLOBAL $card_id; echo $card_id ?></h3>
-        <form onload="getLocation()" action="scan_confirm.php?card_id=<?php GLOABL $card_id; echo $card_id ?>" method="post">
+        <h3>Card ID: <?php GLOBAL $card_id; echo $card_id; ?></h3>
+        <form onload="getLocation()" action="scan_confirm.php?card_id=<?php GLOBAL $card_id; echo $card_id; ?>" method="post">
             What did the person do for you?<br>
             <textarea name="input_act" id="input_act" cols="30" rows="10"></textarea><br>
             What did this act mean to you?<br>
@@ -72,6 +72,8 @@ function show_error()
 	<body>
 		
         <?php 
+            show_form();
+            /* Delete above and uncomment below for use with populated DB.
             try {
                 // Check for registered card
                 $results = $ks_db->query('SELECT card_id FROM r_u_card WHERE card_id = $1', array($card_id));
@@ -90,7 +92,7 @@ function show_error()
                 }
             } catch (Exception $e) {
                 show_error();
-            }
+            }*/
         ?>
 	</body>
 </html>
