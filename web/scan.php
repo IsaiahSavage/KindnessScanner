@@ -8,7 +8,7 @@ $card_id = isset($_GET["card_id"]) ? htmlspecialchars($_GET["card_id"]) : '';
     <head>
 		<title><?php echo $ks_config['title'] . ' - New Scan'; ?></title>
 	</head>
-	<body>
+	<body onload="getLocation()">
 		<h1>Submit a Scan</h1>
         <!-- Card ID tied to a card's QR code -->
         <!-- Example: my.website.com/web/scan.php?card_id=1032 -->
@@ -22,7 +22,25 @@ $card_id = isset($_GET["card_id"]) ? htmlspecialchars($_GET["card_id"]) : '';
             <textarea name="input_act" id="input_act" cols="30" rows="10"></textarea><br>
             What did this act mean to you?<br>
             <textarea name="input_meaning" id="input_meaning" cols="30" rows="10"></textarea><br>
+            <input type="hidden" id="latitude" value="">
+            <input type="hidden" id="longitude" value="">
             <button type="submit">Submit</button>
         </form>
+        <script>
+            var la = document.getElementById("latitude");
+            var lo = document.getElementById("longitude");
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(setLocation);
+                } else {
+                    la.value = "Oops"; 
+                    lo.value = "Oops"; 
+                }
+            }
+            function setLocation(position) {
+                la.value = position.coords.latitude; 
+                lo.value = position.coords.longitude; 
+            }
+        </script>
 	</body>
 </html>
