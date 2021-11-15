@@ -14,7 +14,7 @@ function show_form()
             or use some sort of check for a specific format
         -->
         <h3>Card ID: <?php GLOBAL $card_id; echo $card_id; ?></h3>
-        <form onload="getLocation()" action="scan_confirm.php?card_id=<?php GLOBAL $card_id; echo $card_id; ?>" method="post">
+        <form action="scan_confirm.php?card_id=<?php GLOBAL $card_id; echo $card_id; ?>" method="post">
             What did the person do for you?<br>
             <textarea name="input_act" id="input_act" cols="30" rows="10"></textarea><br>
             What did this act mean to you?<br>
@@ -26,6 +26,7 @@ function show_form()
         <script>
             var la = document.getElementById("latitude");
             var lo = document.getElementById("longitude");
+
             function getLocation() {
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(setLocation);
@@ -34,10 +35,13 @@ function show_form()
                     lo.value = "Not Supported"; 
                 }
             }
+
             function setLocation(position) {
                 la.value = position.coords.latitude; 
                 lo.value = position.coords.longitude; 
             }
+
+            window.onload = getLocation;
         </script>
     <?php
 }
