@@ -20,8 +20,8 @@ function show_form()
             What did this act mean to you?<br>
             <textarea name="input_meaning" id="input_meaning" cols="30" rows="10"></textarea><br>
             <input type="submit" value="Submit">
-            <input type="hidden" id="latitude" value="">
-            <input type="hidden" id="longitude" value="">
+            <input type="hidden" name="latitude" id="latitude" value="">
+            <input type="hidden" name="longitude" id="longitude" value="">
         </form>
         <script>
             var la = document.getElementById("latitude");
