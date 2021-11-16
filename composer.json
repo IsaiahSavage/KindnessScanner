@@ -1,5 +1,6 @@
 {
     "require": {
-        "chillerlan/php-qrcode": "^4.3"
+        "chillerlan/php-qrcode": "^4.3",
+        "mjaschen/phpgeo": "^3.2"
     }
 }

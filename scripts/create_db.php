@@ -4,9 +4,7 @@ include_once('header.php');
 
 echo("Creating database...\n");
 
-$ks_db->t_begin();
-
-try {
+$ks_db->transaction(function($ks_db) {
 	/* Tables. */
 	$ks_db->query('CREATE TABLE registered_user(user_id SERIAL PRIMARY KEY, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, privilege TEXT NOT NULL)');
 	$ks_db->query('CREATE TABLE card(card_id SERIAL PRIMARY KEY, creation_latitude NUMERIC(9,6) NOT NULL, creation_longitude NUMERIC(9,6) NOT NULL, creation_time TIMESTAMP WITH TIME ZONE NOT NULL)');
@@ -24,14 +22,8 @@ try {
 	$ks_db->query('CREATE INDEX idx_name ON registered_user(name)');
 	$ks_db->query('CREATE INDEX idx_email ON registered_user(email)');
 	$ks_db->query('CREATE INDEX idx_description ON scan(description)');
-
-	$ks_db->t_commit();
-
+}, function($ks_db) {
 	echo("Successfully created new database.\n");
-}
-catch(Exception $e) {
+}, function($ks_db) {
 	echo("Failed to create database, rolling back...\n");
-
-	$ks_db->t_rollback();
-	throw $e;
-}
+});

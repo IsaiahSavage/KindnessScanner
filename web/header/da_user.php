@@ -35,13 +35,19 @@ function ks_da_user_verify($ks_db, string $email, string $password) {
 }
 
 /* Returns an array of user information for the specified ID with keys:
-id, name, email, privilege */
+id, name, email, privilege
+Returns false if the user does not exist. */
 function ks_da_user_get($ks_db, int $user_id) {
 	$row = $ks_db->query_next($ks_db->query('SELECT user_id,name,email,privilege FROM registered_user WHERE user_id = $1', array($user_id)));
-	return array(
-		'id' => $row[0],
-		'name' => $row[1],
-		'email' => $row[2],
-		'privilege' => $row[3],
-	);
+	if($row) {
+		return array(
+			'id' => $row[0],
+			'name' => $row[1],
+			'email' => $row[2],
+			'privilege' => $row[3],
+		);
+	}
+	else {
+		return false;
+	}
 }

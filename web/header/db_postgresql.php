@@ -1,7 +1,9 @@
 <?php
 
+include_once('header/db.php');
+
 // PostgreSQL connection.
-class KSDBPSQL
+class KSDBPSQL extends KSDB
 {
 	protected $conn_id;
 	protected $conn;
