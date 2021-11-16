@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once('header.php');
 
 $card_id = isset($_GET["card_id"]) ? htmlspecialchars($_GET["card_id"]) : '';
@@ -10,7 +10,7 @@ function show_form()
         <!-- Card ID tied to a card's QR code -->
         <!-- Example: my.website.com/web/scan.php?card_id=1032 -->
         <!-- Perhaps check for manually-injected card_id:
-            if (isset($_GET["source"]) && $_GET["source"] == "qr") {...} 
+            if (isset($_GET["source"]) && $_GET["source"] == "qr") {...}
             or use some sort of check for a specific format
         -->
         <h3>Card ID: <?php GLOBAL $card_id; echo $card_id; ?></h3>
@@ -31,14 +31,14 @@ function show_form()
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(setLocation);
                 } else {
-                    la.value = "Not Supported"; 
-                    lo.value = "Not Supported"; 
+                    la.value = "Not Supported";
+                    lo.value = "Not Supported";
                 }
             }
 
             function setLocation(position) {
-                la.value = position.coords.latitude; 
-                lo.value = position.coords.longitude; 
+                la.value = position.coords.latitude;
+                lo.value = position.coords.longitude;
             }
 
             window.onload = getLocation;
@@ -46,7 +46,7 @@ function show_form()
     <?php
 }
 
-function show_redirect() 
+function show_redirect()
 {
     ?>
         <h1>Welcome!</h1>
@@ -74,8 +74,8 @@ function show_error()
 		<title><?php echo $ks_config['title']; ?> | New Scan</title>
 	</head>
 	<body>
-		
-        <?php 
+
+        <?php
             show_form();
             /* Delete above and uncomment below for use with populated DB.
             try {
@@ -92,7 +92,7 @@ function show_error()
                         show_redirect();
                     } else {
                         show_error();
-                    }  
+                    }
                 }
             } catch (Exception $e) {
                 show_error();
