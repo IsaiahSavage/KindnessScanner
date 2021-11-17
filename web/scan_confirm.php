@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once('header.php');
 
 $input_act = $input_meaning = "";
@@ -72,12 +72,15 @@ function show_error()
 }
 ?>
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <title><?php echo $ks_config['title']; ?> | New Scan</title>
-    </head>    
+    </head>
     <body>
+		<header>
+			<?php include_once('nav_header.php'); ?>
+		</header>
         <?php
             construct_data();
             show_confirmation();

@@ -9,6 +9,9 @@
 		<title><?php echo($ks_config['title']); ?> | Card Manager</title>
 	</head>
 	<body>
+		<header>
+			<?php include_once('nav_header.php'); ?>
+		</header>
 		Current cards:
 		<ul>
 			<?php

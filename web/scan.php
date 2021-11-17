@@ -74,7 +74,9 @@ function show_error()
 		<title><?php echo $ks_config['title']; ?> | New Scan</title>
 	</head>
 	<body>
-
+		<header>
+			<?php include_once('nav_header.php'); ?>
+		</header>
         <?php
             show_form();
             /* Delete above and uncomment below for use with populated DB.

@@ -13,8 +13,17 @@ function ks_can_manage_cards() {
 	return ks_privilege() == 'admin';
 }
 
+function ks_can_manage_users() {
+	return ks_privilege() == 'admin';
+}
+
+function ks_can_manage_user(int $user_id) {
+	GLOBAL $ks_logged_in_user;
+	return ks_can_manage_users() || $user_id === $ks_logged_in_user['id'];
+}
+
 function ks_can_manage_card(int $card_id) {
 	GLOBAL $ks_db;
 	GLOBAL $ks_logged_in_user;
-	return ks_can_manage_cards() || ks_da_card_get($ks_db, $card_id)['owner'] == $ks_logged_in_user['id'];
+	return ks_can_manage_cards() || ks_da_card_get($ks_db, $card_id)['owner'] === $ks_logged_in_user['id'];
 }

@@ -11,4 +11,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$card_id = ks_da_card_add($ks_db, new Location\Coordinate($latitude, $longitude), time(), $owner_id);
 
 	header('Location: ' . 'card_manager.php?card_id=' . $card_id);
+	die();
 }

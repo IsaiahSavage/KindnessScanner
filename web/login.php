@@ -18,12 +18,14 @@
 		<title><?php echo($ks_config['title']); ?> | Login</title>
 	</head>
 	<body>
+		<header>
+			<?php include_once('nav_header.php'); ?>
+		</header>
 		<?php
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				if(ks_login($_POST['email'], $_POST['password'])) {
-					?>
-						Hello, <?php echo(htmlentities($ks_logged_in_user['name'])) ?>.
-					<?php
+					header('Location: index.php');
+					die();
 				}
 				else {
 					?>
