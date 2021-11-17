@@ -19,6 +19,6 @@
 		<h1>Card #<?php echo $card['id'] ?></h1>
 		Registered to <?php echo $owner['name']; ?><br>
 		Created at <?php echo date('c', $card['creation_time']); ?><br>
-		<?php printf("<a href='card_qr.php?card_id=%d&format=pdf'>Generate Card PDF</a>", $card['id']); ?>
+		<?php printf("<a href='card_qr_pdf.php?card_id=%d'>Generate Card PDF</a>", $card['id']); ?>
 	</body>
 </html>
