@@ -2,6 +2,7 @@
     "require": {
         "chillerlan/php-qrcode": "^4.3",
         "mjaschen/phpgeo": "^3.2",
-        "setasign/fpdf": "^1.8"
+        "setasign/fpdf": "^1.8",
+        "hackzilla/password-generator": "^1.6"
     }
 }
