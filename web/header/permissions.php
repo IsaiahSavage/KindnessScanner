@@ -8,15 +8,15 @@ $ks_possible_privileges = array("user", "admin");
 
 function ks_privilege() {
 	GLOBAL $ks_logged_in_user;
-	return $ks_logged_in_user && $ks_logged_in_user['privilege'];
+	return $ks_logged_in_user ? $ks_logged_in_user['privilege'] : false;
 }
 
 function ks_can_manage_cards() {
-	return ks_privilege() == 'admin';
+	return ks_privilege() === 'admin';
 }
 
 function ks_can_manage_users() {
-	return ks_privilege() == 'admin';
+	return ks_privilege() === 'admin';
 }
 
 function ks_can_manage_user(int $user_id) {

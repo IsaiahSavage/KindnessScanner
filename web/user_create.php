@@ -17,11 +17,11 @@
 			if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				if(ks_can_manage_users()) {
 					$password = ks_generate_random_password();
-					$user = ks_da_user_get($ks_db, ks_da_user_add(array(
+					$user = ks_da_user_get($ks_db, ks_da_user_add($ks_db, array(
 						'name' => $_POST['name'],
 						'email' => $_POST['email'],
 						'password' => $password,
-						'privilege' => $user,
+						'privilege' => 'user',
 					)));
 
 					?>
