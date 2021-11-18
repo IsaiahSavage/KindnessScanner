@@ -54,7 +54,7 @@ function show_redirect()
         <span>
             <button><a href="login.php">Sign In</a></button>
             <!-- Link below will need to be changed to registration page once it is created. -->
-            <button><a href="login.php">Create an Account</a></button>
+            <button><a href="login.php">Request an Account</a></button>
         </span>
     <?php
 }
@@ -78,8 +78,6 @@ function show_error()
 			<?php include_once('nav_header.php'); ?>
 		</header>
         <?php
-            show_form();
-            /* Delete above and uncomment below for use with populated DB.
             try {
                 // Check for registered card
                 $results = $ks_db->query('SELECT card_id FROM r_u_card WHERE card_id = $1', array($card_id));
@@ -98,7 +96,7 @@ function show_error()
                 }
             } catch (Exception $e) {
                 show_error();
-            }*/
+            }
         ?>
 	</body>
 </html>

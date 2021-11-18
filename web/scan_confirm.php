@@ -4,11 +4,11 @@ include_once('header.php');
 $input_act = $input_meaning = "";
 
 function construct_data() {
-    $input_act = format_data($_POST["input_act"]);
-    $input_meaning = format_data($_POST["input_meaning"]);
-    $timestamp = build_timestamp();
     $latitude = (float) format_data($_POST["latitude"]);
     $longitude = (float) format_data($_POST["longitude"]);
+    $input_act = format_data($_POST["input_act"]);
+    $input_meaning = format_data($_POST["input_meaning"]);
+    return array($latitude, $longitude, $input_act);
 }
 
 // Format data for submission to DB
@@ -19,39 +19,24 @@ function format_data($data) {
     return $data;
 }
 
-// Build timestamp for submission
-function build_timestamp() {
-    $date_time = date('Y-m-d G:i:s') . get_UTC_offset(date_default_timezone_get());
-    return $date_time;
-}
-
-// Convert to UTC offset for use in DB queries
-function get_UTC_offset($timezone)
-{
-    $current = timezone_open($timezone);
-    $utcTime = new \DateTime('now', new \DateTimeZone('UTC'));
-    $offsetInSecs = $current->getOffset($utcTime);
-    $hoursAndSec = gmdate('H:i', abs($offsetInSecs));
-    return stripos($offsetInSecs, '-') === false ? "+{$hoursAndSec}" : "-{$hoursAndSec}";
-}
-
-/*
 // Insert user data into DB
-// Currently under construction due to lack of lat./long. values
-function submit_data()
+// Currently under construction
+function submit_data(float $lat, float $long, string $description)
 {
-    $ks_db->begin();
+    GLOBAL $ks_db;
+    $ks_db->t_begin();
 
     try {
-        $ks_db->query('INSERT INTO scan (latitude, longitude, time, description) VALUES ($1, $2, TIMESTAMP WITH TIME ZONE $3, $4)', [$latitude, $longitude, $timestamp, $input_act]);
-        $scan_id = $ks_db->query('SELECT CURRVAL('scan_scan_id_seq')');
-        $ks_db->query('INSERT INTO card_scan (card_id, scan_id) VALUES ($1, $2)', [$_GET["card_id"], $scan_id]);
+        $card_id = (integer) htmlspecialchars($_GET["card_id"]);
+        $scan_id_row = $ks_db->query('INSERT INTO scan (latitude, longitude, time, description) VALUES ($1, $2, NOW(), $3) RETURNING scan_id', array($lat, $long, $description));
+        $scan_id = pg_fetch_row($scan_id_row)['0'];
+        $ks_db->query('INSERT INTO card_scan (card_id, scan_id) VALUES ($1, $2)', array($card_id, $scan_id));
         $ks_db->t_commit();
     } catch (Exception $e) {
         $ks_db->t_rollback();
         throw $e;
     }
-} */
+}
 
 function show_confirmation()
 {
@@ -82,20 +67,17 @@ function show_error()
 			<?php include_once('nav_header.php'); ?>
 		</header>
         <?php
-            construct_data();
-            show_confirmation();
-            /* Delete above and uncomment below for use with populated DB.
             if (isset($_POST["input_act"], $_POST["input_meaning"], $_POST["latitude"], $_POST["longitude"])) {
                 try{
-                    construct_data();
-                    // submit_data();
+                    $data = construct_data();
+                    submit_data(...$data);
                     show_confirmation();
                 } catch(Exception $e) {
                     show_error();
                 }
             } else {
                 show_error();
-            } */
+            }
         ?>
     </body>
 </html>
