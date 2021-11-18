@@ -10,6 +10,16 @@ function ks_da_user_add($ks_db, array $params) {
 		array($params['name'], $params['email'], password_hash($params['password'], PASSWORD_DEFAULT), $params['privilege'])))[0];
 }
 
+/* Changes a user's password. */
+function ks_da_user_set_password($ks_db, int $user_id, string $password) {
+	$ks_db->query('UPDATE registered_user SET password = $1 WHERE user_id = $2', array(password_hash($password, PASSWORD_DEFAULT), $user_id));
+}
+
+/* Delete a user. */
+function ks_da_user_delete($ks_db, int $user_id) {
+	$ks_db->query('DELETE FROM registered_user WHERE user_id = $1', array($user_id));
+}
+
 /* Verifies login information of e-mail and password.
 Returns the user ID if the verification was successful, or `false` if it was not. */
 function ks_da_user_verify($ks_db, string $email, string $password) {
@@ -41,7 +51,7 @@ function ks_da_user_get($ks_db, int $user_id) {
 	$row = $ks_db->query_next($ks_db->query('SELECT user_id,name,email,privilege FROM registered_user WHERE user_id = $1', array($user_id)));
 	if($row) {
 		return array(
-			'id' => $row[0],
+			'id' => (int) $row[0],
 			'name' => $row[1],
 			'email' => $row[2],
 			'privilege' => $row[3],

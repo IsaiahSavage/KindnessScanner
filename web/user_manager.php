@@ -74,6 +74,7 @@
 						<hr>
 						<form action="user_delete.php" method="post">
 							<input type="hidden" name="user_id" value="<?php echo $user['id']; ?>"><br>
+							Confirm email address: <input type="text" name="email_confirm"><br>
 							<input type="submit" value="Delete user">
 						</form>
 					<?php

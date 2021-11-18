@@ -21,7 +21,7 @@ function ks_da_card_get($ks_db, int $card_id) {
 	if($row) {
 		return array(
 			'id' => $row[0],
-			'creation_location' => new Location\Coordinate($row[1], $row[2]),
+			'creation_location' => new Location\Coordinate((float) $row[1], (float) $row[2]),
 			'creation_time' => $row[3],
 			'owner' => $row[4],
 		);

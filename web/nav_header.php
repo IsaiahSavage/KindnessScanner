@@ -1,5 +1,6 @@
 <?php
 	include_once('header/permissions.php');
+	include_once('header/messages.php');
 ?>
 
 <ul>
@@ -24,3 +25,20 @@
 	?>
 </ul>
 <hr>
+<?php
+	$nav_messages = ks_pop_messages();
+	if(!empty($nav_messages)) {
+		?>
+			<ul>
+			<?php
+				foreach($nav_messages as $message) {
+					?>
+						<li><?php echo htmlentities($message); ?></li>
+					<?php
+				}
+			?>
+			</ul>
+			<hr>
+		<?php
+	}
+?>
