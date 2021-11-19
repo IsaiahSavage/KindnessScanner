@@ -3,6 +3,20 @@ include_once('header.php');
 
 $card_id = isset($_GET["card_id"]) ? htmlspecialchars($_GET["card_id"]) : '';
 
+/* If the card ID wasn't passed in GET parameters, let's try to read it from the URL itself as the last field behind a slash. */
+if(empty($card_id)) {
+	$exploded = explode('/', $_SERVER['REQUEST_URI']);
+	var_dump($exploded);
+	if(!empty($exploded)) {
+		$end_arg = end($exploded);
+		if($end_arg !== 'scan.php' && is_numeric($end_arg)) {
+			// The last argument could be a valid ID, let's redirect!
+			header('Location: scan.php?card_id=' . $end_arg);
+			die();
+		}
+	}
+}
+
 function show_form()
 {
     ?>
