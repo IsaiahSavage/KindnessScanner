@@ -19,6 +19,14 @@ function show_form()
             <textarea name="input_act" id="input_act" cols="30" rows="10"></textarea><br>
             What did this act mean to you?<br>
             <textarea name="input_meaning" id="input_meaning" cols="30" rows="10"></textarea><br>
+            <span id="location_fallback">
+                Country
+                <input type="text" name="country" id="country" value="">
+                State
+                <input type="text" name="state" id="state" value="">
+                City
+                <input type="text" name="city" id="city" value="">
+            </span>
             <input type="submit" value="Submit">
             <input type="hidden" name="latitude" id="latitude" value="">
             <input type="hidden" name="longitude" id="longitude" value="">
@@ -39,6 +47,8 @@ function show_form()
             function setLocation(position) {
                 la.value = position.coords.latitude;
                 lo.value = position.coords.longitude;
+                let location_fallback = document.getElementById("location_fallback");
+                location_fallback.style.display = "none";
             }
 
             window.onload = getLocation;

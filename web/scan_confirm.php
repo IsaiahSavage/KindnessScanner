@@ -3,9 +3,9 @@ include_once('header.php');
 
 $input_act = $input_meaning = "";
 
-function construct_data() {
-    $latitude = (float) format_data($_POST["latitude"]);
-    $longitude = (float) format_data($_POST["longitude"]);
+function construct_data($latitude, $longitude) {
+    $latitude = (float) format_data($latitude);
+    $longitude = (float) format_data($longitude);
     $input_act = format_data($_POST["input_act"]);
     $input_meaning = format_data($_POST["input_meaning"]);
     return array($latitude, $longitude, $input_act);
@@ -68,12 +68,38 @@ function show_error()
 			<?php include_once('nav_header.php'); ?>
 		</header>
         <?php
-            if (isset($_POST["input_act"], $_POST["input_meaning"], $_POST["latitude"], $_POST["longitude"])) {
-                try{
-                    $data = construct_data();
-                    submit_data(...$data);
-                    show_confirmation();
-                } catch(Exception $e) {
+            if (isset($_POST["input_act"], $_POST["input_meaning"])) {
+                if (isset($_POST["latitude"], $_POST["longitude"])) {
+                    try {
+                        $data = construct_data($_POST["latitude"], $_POST["longitude"]);
+                        submit_data(...$data);
+                        show_confirmation();
+                    } catch(Exception $e) {
+                        show_error();
+                    }
+                } else if (isset($_POST["country"], $_POST["state"], $_POST["city"])) {
+                    $location = urlencode($_POST["city"] . ',' . $_POST["state"] . ',' .
+                    $_POST["country"]);
+                    $request_url = 'https://geocode.xyz/' . $location . '?json=1';
+
+                    $ch = curl_init($request_url);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $json = curl_exec($ch);
+                    curl_close($ch);
+
+                    $apiResult = json_decode($json, true);
+                    $latitude = $apiResult["latt"];
+                    $longitude = $apiResult["longt"];
+                    echo $latitude . ' ' . $longitude;
+
+                    try {
+                        $data = construct_data($latitude, $longitude);
+                        submit_data(...$data);
+                        show_confirmation();
+                    } catch(Exception $e) {
+                        show_error();
+                    }
+                } else {
                     show_error();
                 }
             } else {
