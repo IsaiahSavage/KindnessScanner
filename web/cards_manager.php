@@ -22,21 +22,5 @@
 				}
 			?>
 		</ul>
-		<?php
-			if(ks_can_manage_cards()) {
-		?>
-			<hr>
-			<form action="card_create.php" method="post">
-				User ID: <input type="number" name="user_id"><br>
-
-				<!-- TODO: Card location selection. -->
-				<input type="hidden" name="latitude" id="latitude" value="0">
-				<input type="hidden" name="longitude" id="longitude" value="0">
-
-				<input type="submit" value="Create New Card">
-			</form>
-		<?php
-			}
-		?>
 	</body>
 </html>

@@ -19,6 +19,33 @@
 		(ID <?php echo $user['id']; ?>, <?php echo $user['privilege']; ?>)<br>
 		<a href='mailto:<?php echo $user['email']; ?>'><?php echo $user['email']; ?></a><br>
 		<?php
+			if(ks_can_manage_cards()) {
+		?>
+			<hr>
+			<form action="card_create.php" method="post">
+				<input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
+
+				<!-- TODO: Card location selection. -->
+				<input type="hidden" name="latitude" id="latitude" value="0">
+				<input type="hidden" name="longitude" id="longitude" value="0">
+
+				<input type="submit" value="Create New Card">
+			</form>
+		<?php
+			}
+		?>
+		<hr>
+		Cards:
+		<ul>
+			<?php
+				foreach($ks_db->query_array("SELECT card_id FROM card NATURAL JOIN r_u_card WHERE r_u_card.user_id = $1", array($user['id'])) as $row) {
+					if(ks_can_manage_card($row[0])) {
+						printf("<li><a href='card_manager.php?card_id=%d'>Card %d</a></li>\n", $row[0], $row[0]);
+					}
+				}
+			?>
+		</ul>
+		<?php
 			if(ks_can_manage_user($user['id'])) {
 				?>
 					<hr>
