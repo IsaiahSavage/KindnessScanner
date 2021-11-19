@@ -1,6 +1,7 @@
 <?php
 	include_once('header.php');
 	include_once('header/permissions.php');
+	include_once('header/map.php');
 ?>
 
 <!DOCTYPE html>
@@ -34,5 +35,8 @@
 		<?php
 			}
 		?>
+
+		<div id="map" style="width: 100%; height: 75vh;"></div>
+		<?php ks_map_card('map', $card['id']); ?>
 	</body>
 </html>
