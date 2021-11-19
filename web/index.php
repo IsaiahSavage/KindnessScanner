@@ -15,21 +15,47 @@
 		<script type="text/javascript">
 			let mapOptions = {
 				center: [40.22, -82.591],
-				zoom: 8
+				zoom: 8,
+				minZoom: 3
 			};
 
 			let map = new L.map('map', mapOptions);
 
 			let layer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'}).addTo(map);
 
-			/* TODO: Add markers from all cards */
-			<?php /*
-				GLOBAL $ks_db;
-				$card_locations = $ks_db->query("SELECT latitude, longitude FROM scan");
-				echo $card_locations;
+			// Find scan locations to add to map
+			<?php
+				function get_scan_locations() 
+				{
+					GLOBAL $ks_db;
+					try {
+						$scan_locations = $ks_db->query("SELECT latitude, longitude, description, card_id FROM scan NATURAL JOIN card_scan");
+						
+						// Grab columns from query results
+						$scan_latitudes = pg_fetch_all_columns($scan_locations, 0);
+						$scan_longitudes = pg_fetch_all_columns($scan_locations, 1);
+						$description = pg_fetch_all_columns($scan_locations, 2);
+						$card_id = pg_fetch_all_columns($scan_locations, 3);
+
+						return json_encode(array_map(null, $scan_latitudes, $scan_longitudes, $description, $card_id));
+					} catch (Exception $e) {
+						echo 'Error occured while locating scans: ' . $e;
+						return [];
+					}
+				}
 			?>
-			var card_locations = <?php echo '["' . implode('", "', $card_locations) . '"]' ?>;
-			-- Remove this entire line in order to use -- */ ?>
+
+			// Add scan locations to map
+			var scan_locations = <?php echo get_scan_locations() . '' ?>;
+			for (let i = 0; i < scan_locations.length; i++) {
+				// Retrieve values from JSON arrays
+				let latitude = parseFloat(scan_locations[i][0]);
+				let longitude = parseFloat(scan_locations[i][1]);
+				let description = scan_locations[i][2];
+				let card_id = scan_locations[i][3];
+
+				L.marker([latitude, longitude], {title: description}).addTo(map).bindPopup("<h1>Card " + card_id + "</h1><p>" + description + "</p>");
+			}
 		</script>
 	</body>
 </html>
