@@ -7,6 +7,7 @@
 <html lang="en">
 	<head>
 		<title><?php echo($ks_config['title']); ?> | Card Manager</title>
+		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
 		<header>

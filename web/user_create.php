@@ -8,6 +8,7 @@
 <html lang="en">
 	<head>
 		<title><?php echo($ks_config['title']); ?> | User Creation</title>
+		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
 		<header>

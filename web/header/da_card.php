@@ -13,6 +13,14 @@ function ks_da_card_add($ks_db, $creation_location, int $timestamp, int $user_id
 	});
 }
 
+/* Delete a card. */
+function ks_da_card_delete($ks_db, int $card_id) {
+	$ks_db->transaction(function($ks_db) use ($card_id) {
+		$ks_db->query('DELETE FROM r_u_card WHERE card_id = $1', array($card_id));
+		$ks_db->query('DELETE FROM card WHERE card_id = $1', array($card_id));
+	});
+}
+
 /* Returns an array of information about a card with keys:
 id, creation_location [Coordinate], creation_timestamp [UNIX epoch timestamp], owner
 Returns false if the card does not exist. */

@@ -16,6 +16,7 @@
 <html lang="en">
 	<head>
 		<title><?php echo($ks_config['title']); ?> | Login</title>
+		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
 		<header>
