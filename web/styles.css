@@ -1,8 +1,33 @@
  nav {
+     list-style: none;
     background-color: darkgrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+ }
+ 
+ nav.navigation a {
+     background-color: #666666;
+     text-decoration: none;
+     height: 50px;
+     display: block;
+     border: solid black;
+     font-size: xx-large;
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     width: 20%;
+     text-align: center;
+ }
+
+ nav.navigation a:hover {
+    background-color: #4d4d4d;
+    border: none;
  }
 
  body {
     background-color: lightgrey;
  }
  
+ .nav_header {
+    background-color: darkgrey;
+    width: 100%;
+ }

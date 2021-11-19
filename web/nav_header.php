@@ -3,7 +3,7 @@
 	include_once('header/messages.php');
 ?>
 <link rel="stylesheet" href="styles.css">
-<nav>
+<nav class="navigation">
 	<?php
 		if($ks_logged_in_user) {
 			printf("<li>Hello, %s</li>\n", htmlentities($ks_logged_in_user['name']));
