@@ -19,6 +19,10 @@
 		<h1><?php echo $user['name'] ?></h1>
 		(ID <?php echo $user['id']; ?>, <?php echo $user['privilege']; ?>)<br>
 		<a href='mailto:<?php echo $user['email']; ?>'><?php echo $user['email']; ?></a><br>
+		This user's cards have been scanned <?php
+			$n = $ks_db->query_next($ks_db->query('SELECT count(scan_id) FROM card_scan NATURAL JOIN r_u_card WHERE user_id = $1', array($user['id'])))[0];
+			printf('<b>%d</b> %s', $n, ($n === 1) ? 'time' : 'times');
+		?>.<br>
 		<?php
 			if(ks_can_manage_cards()) {
 		?>

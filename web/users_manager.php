@@ -18,7 +18,7 @@
 		?>
 			<ul>
 				<?php
-					foreach($ks_db->query_array("SELECT user_id,name,email,privilege FROM registered_user") as $row) {
+					foreach($ks_db->query_array("SELECT user_id,name,email,privilege FROM registered_user ORDER BY user_id") as $row) {
 						printf("<li><a href='user_manager.php?user_id=%d'>%s</a> <a href='mailto:%s'>%s</a> (%s)</li>\n", $row[0], $row[1], $row[2], $row[2], $row[3]);
 					}
 				?>

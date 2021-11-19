@@ -22,10 +22,10 @@ function ks_da_card_delete($ks_db, int $card_id) {
 }
 
 /* Returns an array of information about a card with keys:
-id, creation_location [Coordinate], creation_timestamp [UNIX epoch timestamp], owner
+id, creation_location [Coordinate], creation_time [UNIX epoch timestamp], owner
 Returns false if the card does not exist. */
 function ks_da_card_get($ks_db, int $card_id) {
-	$row = $ks_db->query_next($ks_db->query('SELECT card.card_id, creation_latitude, creation_longitude, extract(epoch FROM creation_time), user_id FROM card LEFT JOIN r_u_card ON card.card_id = r_u_card.card_id WHERE card.card_id = $1', array($card_id)));
+	$row = $ks_db->query_next($ks_db->query('SELECT card.card_id, creation_latitude, creation_longitude, EXTRACT(epoch FROM creation_time), user_id FROM card LEFT JOIN r_u_card ON card.card_id = r_u_card.card_id WHERE card.card_id = $1', array($card_id)));
 	if($row) {
 		return array(
 			'id' => $row[0],
