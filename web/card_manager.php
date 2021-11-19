@@ -30,7 +30,7 @@
 		<?php
 			if(ks_can_manage_card($card['id'])) {
 				printf("<a href='card_qr_pdf.php?card_id=%d'>Generate Card PDF</a><br>", $card['id']);
-				$scan_url = sprintf('%s/scan.php?card_id=%d', $ks_config['root_url'], $card['id']);
+				$scan_url = sprintf('%s/scan.php/%d', $ks_config['root_url'], $card['id']);
 				printf("Scan URL: <a href='%s'>%s</a><br>", htmlentities($scan_url), htmlentities($scan_url));
 		?>
 			<hr>
