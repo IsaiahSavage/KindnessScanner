@@ -21,10 +21,10 @@
 		<h1>Card #<?php echo $card['id'] ?></h1>
 		Registered to <?php echo $owner['name']; ?> (<?php echo $owner['email']; ?>) <br>
 		Created at <?php echo date('c', $card['creation_time']); ?><br>
-		<?php printf("<a href='card_qr_pdf.php?card_id=%d'>Generate Card PDF</a>", $card['id']); ?>
 
 		<?php
 			if(ks_can_manage_card($card['id'])) {
+				printf("<a href='card_qr_pdf.php?card_id=%d'>Generate Card PDF</a>", $card['id']);
 		?>
 			<hr>
 			<form action="card_delete.php" method="post">
