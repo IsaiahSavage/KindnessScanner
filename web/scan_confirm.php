@@ -8,7 +8,7 @@ function construct_data($latitude, $longitude) {
     $longitude = (float) format_data($longitude);
     $input_act = format_data($_POST["input_act"]);
     $input_meaning = format_data($_POST["input_meaning"]);
-    return array($latitude, $longitude, $input_act);
+    return array($latitude, $longitude, $input_act . "\n" . $input_meaning);
 }
 
 // Format data for submission to DB
