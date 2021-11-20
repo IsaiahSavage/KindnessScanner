@@ -8,8 +8,9 @@
 		if($ks_logged_in_user) {
 			printf("<li>Hello, %s</li>\n", htmlentities(explode(" ", $ks_logged_in_user['name'])[0]));
 			?>
-				<a href='index.php'>Dashboard</a>
+				<a href='index.php' id="link-dashboard">Home</a>
 				<a href='cards_manager.php'>Manage Cards</a>
+				<h1 id="title"><?php echo($ks_config['title']); ?></h1>
 				<a href='user_manager.php?user_id=<?php echo($ks_logged_in_user['id']); ?>'>My Settings</a>
 				<?php
 					if(ks_can_manage_users()) {
