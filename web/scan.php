@@ -10,7 +10,7 @@ if(empty($card_id)) {
 		$end_arg = end($exploded);
 		if($end_arg !== 'scan.php' && is_numeric($end_arg)) {
 			// The last argument could be a valid ID, let's redirect!
-			header('Location: scan.php?card_id=' . $end_arg);
+			header('Location: ../scan.php?card_id=' . $end_arg);
 			die();
 		}
 	}
