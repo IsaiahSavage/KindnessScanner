@@ -1,33 +1,56 @@
- nav {
-     list-style: none;
-    background-color: darkgrey;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
- }
- 
- nav.navigation a {
-     background-color: #666666;
-     text-decoration: none;
-     height: 50px;
-     display: block;
-     border: solid black;
-     font-size: xx-large;
-     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-     width: 20%;
-     text-align: center;
- }
+nav {
+  background-color: darkgrey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
 
- nav.navigation a:hover {
-    background-color: #4d4d4d;
-    border: none;
- }
+nav.navigation a {
+  background-color: darkgrey;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  font-size: 2vw;
+  margin: auto;
+  text-align: center;
+  text-decoration: none;
+  width: 15%;
+}
 
- body {
-    background-color: lightgrey;
- }
- 
- .nav_header {
-    background-color: darkgrey;
-    width: 100%;
- }
+nav.navigation a:hover {
+  color: white;
+}
+
+nav.navigation li {
+  color: black;
+  font-size: 1em;
+  padding-left: 0.5em;
+}
+
+body {
+  background-color: lightgrey;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.nav_header {
+  background-color: darkgrey;
+  width: 100%;
+}
+
+h1#title {
+  color: white;
+  font-size: 60px;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+h3#title-description {
+  color: darkgrey;
+  font-size: 30px;
+  padding-top: 0;
+  text-align: center;
+}
