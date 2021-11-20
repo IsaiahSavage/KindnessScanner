@@ -6,7 +6,7 @@
 <nav class="navigation">
 	<?php
 		if($ks_logged_in_user) {
-			printf("<li>Hello, %s</li>\n", htmlentities($ks_logged_in_user['name']));
+			printf("<li>Hello, %s</li>\n", htmlentities(explode(" ", $ks_logged_in_user['name'])[0]));
 			?>
 				<a href='index.php'>Dashboard</a>
 				<a href='cards_manager.php'>Manage Cards</a>
