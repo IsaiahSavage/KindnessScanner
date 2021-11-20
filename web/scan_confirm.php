@@ -20,7 +20,6 @@ function format_data($data) {
 }
 
 // Insert user data into DB
-// Currently under construction
 function submit_data(float $lat, float $long, string $description)
 {
     GLOBAL $ks_db;
