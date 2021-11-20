@@ -33,12 +33,13 @@ function show_form()
             What did this act mean to you?<br>
             <textarea name="input_meaning" id="input_meaning" cols="30" rows="10"></textarea><br>
             <span id="location_fallback">
-                Country
-                <input type="text" name="country" id="country" value="">
-                State
-                <input type="text" name="state" id="state" value="">
-                City
-                <input type="text" name="city" id="city" value="">
+                Country:
+                <input type="text" name="country" id="country" value=""><br>
+                State:
+                <input type="text" name="state" id="state" value=""><br>
+                City:
+                <input type="text" name="city" id="city" value=""><br>
+                <br>
             </span>
             <input type="submit" value="Submit">
             <input type="hidden" name="latitude" id="latitude" value="">
