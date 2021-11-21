@@ -1,6 +1,7 @@
 /* Google Font "Viga" */
 @import url("https://fonts.googleapis.com/css2?family=Viga&display=swap");
 
+/* NAVIGATION */
 nav {
   background-color: white;
   display: flex;
@@ -42,19 +43,72 @@ nav.navigation h1 {
   width: 15%;
 }
 
-body {
-  background-color: rgb(179, 205, 255);
-  font-family: "Viga", sans-serif;
-}
-
 .nav_header {
   background-color: white;
   width: 100%;
 }
 
-h1#header-dashboard {
-  color: black;
-  font-size: 30px;
-  padding-top: 0;
+/* UNIVERSAL */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(179, 205, 255);
+  font-family: "Viga", sans-serif;
+}
+
+section {
+  height: 100vh;
+  margin: auto;
+  padding: 25vh 0 0;
   text-align: center;
+  width: 100%;
+}
+
+a.button {
+  background-color: white;
+  border: 0.1em solid white;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  color: black;
+  display: inline-block;
+  font-family: "Viga", sans-serif;
+  font-weight: 300;
+  margin: 1em 0.3em 0.3em 0;
+  padding: 0.35em 1.2em;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+a.button:hover {
+  color: rgb(211, 211, 211);
+}
+
+div#map {
+  height: 75%;
+  width: 75%;
+}
+
+/* INDEX.PHP */
+
+.header-dashboard {
+  color: black;
+  font-size: 50px;
+  text-align: center;
+}
+
+.description-dashboard {
+  margin: 0 auto;
+}
+
+section#map-dashboard {
+  height: 60vh;
+  padding: 0 0 15vh;
+}
+
+section#map-dashboard div#map {
+  margin: 5vh 12.5vw 0;
 }
