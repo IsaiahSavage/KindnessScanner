@@ -16,7 +16,7 @@ You must then copy `config.example.php` into the `web` directory as `config.php`
 From within the project directory:
 ```
 $ ./get_composer.sh
-$ ./composer.phar update
+$ ./composer.phar install
 $ ln -s `realpath web` /var/www/html/my/web/path
 ```
 
@@ -45,3 +45,25 @@ $ php ../scripts/admin_setup.php
 ```
 
 The wizard script will guide you through setup.
+
+### Database administration
+...
+
+## Using the software
+Once the software is installed and an administrator user is created, you are ready to begin.
+Login with the administrator e-mail address and password.
+
+At the main page, you have several options; you can:
+
+* Go to your user settings
+* Manage existing cards
+* Manage existing users
+
+### Example Walkthrough
+At the main page, you can begin by adding a new user for someone else.
+
+Go to *Manage Users* and fill out and submit the *Create New User* form. This will create an account and generate a temporary password that you can then send to that person so they can log in.
+
+You can now create a card registered for that individual. Go to that user's settings, either from the creation page or from *Manage Users*. Select the *Create New Card* option. On the page for that card, you can generate a PDF with a QR code to print off as a physical card.
+
+When that card is scanned, the scannee will be able to input their information and location and record the good deed before passing the card on to someone else. Scans will be displayed in the main map, as well as in the maps for each card.
