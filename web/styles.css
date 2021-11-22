@@ -110,6 +110,7 @@ nav.navigation #link-dashboard-nav {
 
 .description-dashboard {
   margin: 0 auto;
+  width: 50%;
 }
 
 section#map-dashboard {

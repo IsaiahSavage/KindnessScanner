@@ -15,13 +15,14 @@
 		</header>
 		<section id="top-dashboard">
 			<h1 class="header-dashboard">God Loves Unconditionally.<br>So should we.</h1>
-			<p class="description-dashboard">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, rem.</p>
+			<p class="description-dashboard">Acts of kindness can change a life. 
+			<br>Let's work together to spread them as far as possible.</p>
 			<a class="button" href="#about-dashboard">Learn More</a>
 			<a class="button" href="#map-dashboard">View Map</a>
 		</section>
 		<section id="about-dashboard">
-			<h1 class="header-dashboard">Stick together, pass it forward.</h1>
-			<p class="description-dashboard">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, dolor.</p>
+			<h1 class="header-dashboard">Stick together, pay it forward.</h1>
+			<p class="description-dashboard">Kindness Scanner is built around the idea that a simple act of kindness can mean the world to the one who receieves it. By passing a GLU card, you can add an act of kindness to our map - or perhaps start a chain of many.</p>
 			<a class="button" href="#map-dashboard">View Map</a>
 		</section>
 		<section id="map-dashboard">
