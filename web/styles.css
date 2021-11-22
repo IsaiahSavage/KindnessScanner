@@ -1,45 +1,9 @@
 /* Google Font "Viga" */
 @import url("https://fonts.googleapis.com/css2?family=Viga&display=swap");
 
-nav {
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  list-style: none;
-}
-
-nav.navigation a {
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-  font-size: 1em;
-  margin: auto;
-  text-align: center;
-  text-decoration: none;
-  width: 15%;
-}
-
-nav.navigation a:hover {
-  color: rgb(211, 211, 211);
-}
-
-nav.navigation li {
-  color: black;
-  font-size: 1em;
-  padding-left: 0.5em;
-}
-
-nav.navigation h1 {
-  color: black;
-  font-family: "Lucida Sans", sans-serif;
-  font-size: 1.2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 15%;
+/* UNIVERSAL */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -47,14 +11,113 @@ body {
   font-family: "Viga", sans-serif;
 }
 
-.nav_header {
-  background-color: white;
+section {
+  height: 100vh;
+  margin: auto;
+  padding: 25vh 0 0;
+  text-align: center;
   width: 100%;
 }
 
-h1#header-dashboard {
+a.button,
+input[type="submit"] {
+  background-color: white;
+  border: 0.1em solid white;
+  border-radius: 0.12em;
+  box-sizing: border-box;
   color: black;
-  font-size: 30px;
-  padding-top: 0;
+  display: inline-block;
+  font-family: "Viga", sans-serif;
+  font-weight: 300;
+  margin: 1em 0.3em 0.3em 0;
+  padding: 0.35em 1.2em;
+  text-decoration: none;
   text-align: center;
+  transition: all 0.2s;
+}
+
+a.button:hover,
+input[type="submit"]:hover {
+  color: rgb(211, 211, 211);
+}
+
+div#map {
+  height: 75%;
+  width: 75%;
+}
+
+/* NAVIGATION */
+nav {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  height: 6vh;
+}
+
+nav.navigation div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+nav.navigation a {
+  color: black;
+  font-size: 1.5em;
+  margin: 1vh 2vw 1vh 1vw;
+  text-align: center;
+  text-decoration: none;
+}
+
+nav.navigation a:hover {
+  color: rgb(211, 211, 211);
+}
+
+nav.navigation #link-dashboard-nav {
+  color: black;
+  margin-right: 3vw;
+}
+
+/* DROPDOWNS */
+.dropdown {
+  flex-direction: column;
+}
+
+.dropdown > .dropdown-title {
+  flex: 0 0 auto;
+  padding: 0 1vw;
+}
+
+.dropdown > .dropdown-sub {
+  background-color: white;
+  display: none;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-sub {
+  display: flex;
+}
+
+.dropdown-content {
+  flex: 0 0 auto;
+}
+
+/* INDEX.PHP */
+.header-dashboard {
+  color: black;
+  font-size: 50px;
+  text-align: center;
+}
+
+.description-dashboard {
+  margin: 0 auto;
+  width: 50%;
+}
+
+section#map-dashboard {
+  height: 60vh;
+  padding: 0 0 15vh;
+}
+
+section#map-dashboard div#map {
+  margin: 5vh 12.5vw 0;
 }
