@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title><?php echo($ks_config['title']); ?> | Card Manager</title>
+		<title><?php echo($ks_config['title']); ?> | User Manager</title>
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
