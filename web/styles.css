@@ -19,7 +19,8 @@ section {
   width: 100%;
 }
 
-a.button {
+a.button,
+input[type="submit"] {
   background-color: white;
   border: 0.1em solid white;
   border-radius: 0.12em;
@@ -35,7 +36,8 @@ a.button {
   transition: all 0.2s;
 }
 
-a.button:hover {
+a.button:hover,
+input[type="submit"]:hover {
   color: rgb(211, 211, 211);
 }
 
