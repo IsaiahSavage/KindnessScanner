@@ -74,7 +74,7 @@ There are two ways to interact with this website as a traditional user:
 * Visit the hosted website directly
 * Scan the QR code on a card presented to you in-person
 
-# Visiting the Website Directly
+### Visiting the Website Directly
 At the main page, you have several options; you can:
 
 * Learn more about the project
@@ -88,6 +88,6 @@ You can now view your user options by hovering over the words *Hello, (name)*, o
 * Settings - this will take you to a page where you may view your account information and make changes to it.
 * Logout - this will log you out of your account.
 
-# Visiting the Website from a QR Code Scan
+### Visiting the Website from a QR Code Scan
 When the website loads, you will see a form. Please fill out the information and hit the *submit* button. You should now be shown a page that confirms that your information has been submitted. Use the *To Home* button to be taken to the homepage of the website. See the above section, titled *Visiting the Website Directly*, to read more information about what you can do on the website.
 
