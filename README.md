@@ -49,7 +49,7 @@ The wizard script will guide you through setup.
 ### Database administration
 ...
 
-## Using the software
+## Using the Software - Administrator
 Once the software is installed and an administrator user is created, you are ready to begin.
 Login with the administrator e-mail address and password.
 
@@ -67,3 +67,27 @@ Go to *Manage Users* and fill out and submit the *Create New User* form. This wi
 You can now create a card registered for that individual. Go to that user's settings, either from the creation page or from *Manage Users*. Select the *Create New Card* option. On the page for that card, you can generate a PDF with a QR code to print off as a physical card.
 
 When that card is scanned, the scannee will be able to input their information and location and record the good deed before passing the card on to someone else. Scans will be displayed in the main map, as well as in the maps for each card.
+
+## Using the Software - User
+There are two ways to interact with this website as a traditional user:
+
+* Visit the hosted website directly
+* Scan the QR code on a card presented to you in-person
+
+# Visiting the Website Directly
+At the main page, you have several options; you can:
+
+* Learn more about the project
+* View a small map of the scans
+* Log in to the website
+
+The only accounts currently available are those created by a website administrator. If you have an account, a Kindness Scanner representative should have sent you the login information. Once logged in, the *Login* button will be replaced by *Hello, (name)*. 
+You can now view your user options by hovering over the words *Hello, (name)*, or by tapping on them if you are on a mobile device. Your options are:
+
+* My Cards - this will take you to a page where you may view information about the cards registered under your name, including a map of where it has been scanned.
+* Settings - this will take you to a page where you may view your account information and make changes to it.
+* Logout - this will log you out of your account.
+
+# Visiting the Website from a QR Code Scan
+When the website loads, you will see a form. Please fill out the information and hit the *submit* button. You should now be shown a page that confirms that your information has been submitted. Use the *To Home* button to be taken to the homepage of the website. See the above section, titled *Visiting the Website Directly*, to read more information about what you can do on the website.
+
