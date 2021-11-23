@@ -10,7 +10,7 @@
 		<title><?php echo($ks_config['title']); ?> | User Creation</title>
 		<link rel="stylesheet" href="styles.css">
 	</head>
-	<body>
+	<body id="user-create">
 		<header>
 			<?php include_once('nav_header.php'); ?>
 		</header>

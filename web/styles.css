@@ -121,3 +121,109 @@ section#map-dashboard {
 section#map-dashboard div#map {
   margin: 5vh 12.5vw 0;
 }
+
+/* MOBILE OPTIMIZATIONS */
+
+@media only screen and (max-width: 1100px)  {
+  /* UNIVERSAL */
+  #scan-manager *,
+  #user-manager *,
+  #users-manager *,
+  #user-create *,
+  #scan-confirm *,
+  #card-manager *, 
+  #scan *,
+  #cards-manager * {
+    word-wrap: break-word;
+    font-size: 50px;
+  }
+  
+  #user-manager,
+  #card-manager,
+  #scan,
+  #cards-manager {
+    font-size: 50px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    width: 90%;
+    height: 6vh;
+    font-size: 60px;
+  }
+
+  #login-submit {
+    width: 100%;
+    height: 6vh;
+    font-size: 50px;
+  }
+
+  a.button,
+  input[type="submit"] {
+  background-color: white;
+  border: 0.1em solid white;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  color: black;
+  display: inline-block;
+  font-family: "Viga", sans-serif;
+  font-weight: 300;
+  font-size: 70px;
+  margin: 1em 0.3em 0.3em 0;
+  padding: 0.35em 1.2em;
+  text-decoration: none;
+  text-align: center;
+  width: 75%;
+  height: 10vh;
+  transition: all 0.2s;
+}
+
+
+  /* NAVIGATION */
+nav {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  height: 8vh;
+}
+
+nav.navigation div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+nav.navigation a {
+  color: black;
+  font-size: 50px;
+  margin: 1vh 2vw 1vh 1vw;
+  text-align: center;
+  text-decoration: none;
+}
+
+nav.navigation #link-dashboard-nav {
+  color: black;
+  margin-right: 3vw;
+}
+
+/* INDEX.PHP */
+.header-dashboard {
+  color: black;
+  font-size: 100px;
+  text-align: center;
+}
+
+.description-dashboard {
+  margin: 0 auto;
+  font-size: 60px;
+  width: 100%;
+}
+
+section#map-dashboard {
+  height: 60vh;
+  padding: 0 0 15vh;
+}
+
+section#map-dashboard div#map {
+  margin: 5vh 12.5vw 0;
+}
+}

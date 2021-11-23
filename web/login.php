@@ -3,10 +3,10 @@
 
 	function show_login_form() {
 		?>
-			<form action="login.php" method="POST">
+			<form class="login-form" action="login.php" method="POST">
 				<input type="email" name="email"><br>
 				<input type="password" name="password"><br>
-				<input type="submit" value="Login">
+				<input id="login-submit" type="submit" value="Login">
 			</form>
 		<?php
 	}
