@@ -79,10 +79,10 @@ nav.navigation #link-dashboard-nav {
 /* DROPDOWNS */
 .dropdown {
   flex-direction: column;
+  flex: 0 0 auto;
 }
 
 .dropdown > .dropdown-title {
-  flex: 0 0 auto;
   padding: 0 1vw;
 }
 
@@ -95,10 +95,6 @@ nav.navigation #link-dashboard-nav {
 
 .dropdown:hover .dropdown-sub {
   display: flex;
-}
-
-.dropdown-content {
-  flex: 0 0 auto;
 }
 
 /* INDEX.PHP */
