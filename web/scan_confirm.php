@@ -42,7 +42,7 @@ function show_confirmation()
     ?>
         <h1>Thank you for your submission!</h1>
         <h3>Your information has been submitted. Your next task: pass it on.</h3>
-        <button><a href="index.php">View Map</a></button>
+        <button><a href="index.php">To Home</a></button>
     <?php
 }
 
