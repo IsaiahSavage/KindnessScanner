@@ -68,7 +68,7 @@ function show_error()
 		</header>
         <?php
             if (isset($_POST["input_act"], $_POST["input_meaning"])) {
-                if (isset($_POST["latitude"], $_POST["longitude"])) {
+                if (!($_POST["latitude"] == 0 && $_POST["longitude"] == 0)) {
                     try {
                         $data = construct_data($_POST["latitude"], $_POST["longitude"]);
                         submit_data(...$data);
@@ -79,9 +79,12 @@ function show_error()
                 } else if (isset($_POST["country"], $_POST["state"], $_POST["city"])) {
                     $location = urlencode($_POST["city"] . ',' . $_POST["state"] . ',' .
                     $_POST["country"]);
-                    $request_url = 'https://geocode.xyz/' . $location . '?json=1';
+                    $request_options = http_build_query([
+                        'json' => 1
+                    ]);
 
-                    $ch = curl_init($request_url);
+                    // cURL session for geocode API call
+                    $ch = curl_init(sprintf('%s/%s?%s', 'https://geocode.xyz', $location, $request_options));
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     $json = curl_exec($ch);
                     curl_close($ch);
@@ -89,7 +92,6 @@ function show_error()
                     $apiResult = json_decode($json, true);
                     $latitude = $apiResult["latt"];
                     $longitude = $apiResult["longt"];
-                    echo $latitude . ' ' . $longitude;
 
                     try {
                         $data = construct_data($latitude, $longitude);
