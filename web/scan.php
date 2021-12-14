@@ -85,7 +85,7 @@ function show_error()
 		<title><?php echo $ks_config['title']; ?> | New Scan</title>
         <link rel="stylesheet" href="styles.css">
 	</head>
-	<body>
+	<body id="scan">
 		<header>
 			<?php include_once('nav_header.php'); ?>
 		</header>

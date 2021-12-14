@@ -11,7 +11,7 @@
 		<title><?php echo($ks_config['title']); ?> | Card Manager</title>
 		<link rel="stylesheet" href="styles.css">
 	</head>
-	<body>
+	<body id="card-manager">
 		<header>
 			<?php include_once('nav_header.php'); ?>
 		</header>

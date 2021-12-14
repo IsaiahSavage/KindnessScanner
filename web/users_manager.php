@@ -9,7 +9,7 @@
 		<title><?php echo($ks_config['title']); ?> | User Manager</title>
 		<link rel="stylesheet" href="styles.css">
 	</head>
-	<body>
+	<body id="users-manager">
 		<header>
 			<?php include_once('nav_header.php'); ?>
 		</header>

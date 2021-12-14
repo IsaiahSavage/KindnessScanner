@@ -46,9 +46,6 @@ $ php ../scripts/admin_setup.php
 
 The wizard script will guide you through setup.
 
-### Database administration
-...
-
 ## Using the Software - Administrator
 Once the software is installed and an administrator user is created, you are ready to begin.
 Login with the administrator e-mail address and password.

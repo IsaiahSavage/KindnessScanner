@@ -10,7 +10,7 @@
 		<title><?php echo($ks_config['title']); ?> | Scan Manager</title>
 		<link rel="stylesheet" href="styles.css">
 	</head>
-	<body>
+	<body id="scan-manager">
 		<header>
 			<?php include_once('nav_header.php'); ?>
 		</header>
