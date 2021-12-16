@@ -55,6 +55,7 @@
 	$fpdf->SetTextColor(0, 0, 255);
 	$fpdf->SetXY($scale * 4, - $scale * 4 - $overflow_height);
 	$fpdf->MultiCell($size[0] - $scale * 4, $ufont_size / 72, $url);
+	$fpdf->Link($scale * 4, - $scale * 4 - $overflow_height, $size[0] - $scale * 4, ($ufont_size / 72) * 2, $url);
 
 	header('Content-type: application/pdf');
 	echo $fpdf->Output('S');
