@@ -19,6 +19,9 @@
   --font-size-small: 1rem;
   --font-size-section-header: var(--font-size-large);
   --font-size-button: var(--font-size-medium);
+  --font-size-map-header: 2rem;
+  --font-size-map-link: var(--font-size-small);
+  --font-size-map-description: var(--font-size-small);
 }
 
 /* 
@@ -120,6 +123,26 @@ div#map {
   height: 50vh;
   width: 50vw;
   margin: auto;
+}
+
+div#map h1 {
+  margin: 0;
+  padding: 0;
+}
+
+div#map h1 a {
+  color: black;
+  font-size: var(--font-size-map-header);
+  margin: 0;
+  padding: 0;
+}
+
+div#map > a {
+  font-size: var(--font-size-map-link);
+}
+
+div#map p {
+  font-size: var(--font-size-map-description);
 }
 
 /* 
