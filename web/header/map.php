@@ -34,6 +34,22 @@ function ks_map(string $div_id, $render, $center = null, $zoom = 8) {
 					<?php
 				});
 			?>
+
+			function fixZIndicies(elmt) {
+				let i = 1;
+				const children = elmt.children;
+				const childrenArr = [...children];
+				childrenArr.forEach((child) => {
+					child.style.zIndex = i;
+					if (child.hasChildNodes()) {
+						fixZIndicies(child);
+					}
+					i++;
+				});
+			}
+			const mapElement = document.querySelector("div#map");
+			fixZIndicies(mapElement);
+
 		</script>
 	<?php
 }

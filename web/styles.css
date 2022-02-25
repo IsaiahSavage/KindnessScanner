@@ -1,33 +1,99 @@
 /* Google Font "Viga" */
 @import url("https://fonts.googleapis.com/css2?family=Viga&display=swap");
 
-/* UNIVERSAL */
+/* 
+  -----------
+   VARIABLES
+  -----------
+*/
+:root {
+  /* COLORS */
+  --color-theme-primary: #b3cdff;
+  --color-navbar-primary: #b3cdff;
+  --color-button-background: #b3cdff;
+  --color-hover: #ffffff;
+  --font-color-button: #000;
+  /* FONT SIZES */
+  --font-size-large: 3rem;
+  --font-size-medium: 1.75rem;
+  --font-size-small: 1rem;
+  --font-size-section-header: var(--font-size-large);
+  --font-size-button: var(--font-size-medium);
+}
+
+/* 
+  -----------
+   UNIVERSAL
+  -----------
+*/
+
+/* MAIN */
+* {
+  box-sizing: border-box;
+}
+
 html {
+  overflow-y: scroll;
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: rgb(179, 205, 255);
+  background-color: #fff;
   font-family: "Viga", sans-serif;
+  margin: 10vh 0 0;
+}
+
+h1 {
+  font-size: var(--font-size-large);
+}
+
+p {
+  font-size: var(--font-size-medium);
+}
+
+header {
+  background-color: var(--color-theme-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 10vh;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+header hr {
+  display: none;
 }
 
 section {
-  height: 100vh;
-  margin: auto;
-  padding: 25vh 0 0;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 10vh;
   text-align: center;
-  width: 100%;
 }
 
-a.button,
-input[type="submit"] {
-  background-color: white;
+section .section-header {
+  font-size: var(--font-size-section-header);
+}
+
+section * {
+  max-width: 50vw;
+}
+
+/* CLASSES */
+.button {
   border: 0.1em solid white;
   border-radius: 0.12em;
-  box-sizing: border-box;
-  color: black;
+  color: var(--font-color-button);
   display: inline-block;
   font-family: "Viga", sans-serif;
+  font-size: var(--font-size-medium);
   font-weight: 300;
   margin: 1em 0.3em 0.3em 0;
   padding: 0.35em 1.2em;
@@ -36,190 +102,108 @@ input[type="submit"] {
   transition: all 0.2s;
 }
 
-a.button:hover,
-input[type="submit"]:hover {
-  color: rgb(211, 211, 211);
+.button:hover {
+  color: var(--color-hover);
 }
 
+.container {
+  margin: 0;
+  width: 100%;
+}
+
+.highlight {
+  background-color: var(--color-button-background);
+}
+
+/* MAP */
 div#map {
-  height: 75%;
-  width: 75%;
+  height: 50vh;
+  width: 50vw;
+  margin: auto;
 }
 
-/* NAVIGATION */
+/* 
+  ------------
+   NAVIGATION
+  ------------
+*/
+
+/* MAIN */
 nav {
-  background-color: white;
   display: flex;
   justify-content: space-between;
-  height: 6vh;
+  padding: 0.5rem 1rem;
 }
 
-nav.navigation div {
-  display: flex;
-  justify-content: flex-start;
+nav .logo {
+  font-size: 2rem;
+  padding: 0.5rem;
 }
 
-nav.navigation a {
-  color: black;
-  font-size: 1.5em;
-  margin: 1vh 2vw 1vh 1vw;
-  text-align: center;
+nav .logo a {
+  color: #000;
   text-decoration: none;
 }
 
-nav.navigation a:hover {
-  color: rgb(211, 211, 211);
+nav ul {
+  display: flex;
+  list-style-type: none;
+  overflow: hidden;
+  padding: 0;
 }
 
-nav.navigation #link-dashboard-nav {
-  color: black;
-  margin-right: 3vw;
+nav li a {
+  color: #000;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  color: var(--color-hover);
 }
 
 /* DROPDOWNS */
-.dropdown {
-  flex-direction: column;
-  flex: 0 0 auto;
-}
 
-.dropdown > .dropdown-title {
-  padding: 0 1vw;
-}
-
-.dropdown > .dropdown-sub {
-  background-color: white;
+nav .dropdown-sub {
+  background-color: var(--color-navbar-primary);
   display: none;
-  flex-direction: column;
+  padding-top: 1rem;
+  position: absolute;
   z-index: 1;
 }
 
-.dropdown:hover .dropdown-sub {
-  display: flex;
+nav .dropdown-sub a {
+  display: block;
 }
 
-/* INDEX.PHP */
-.header-dashboard {
-  color: black;
-  font-size: 50px;
-  text-align: center;
+nav .dropdown-sub a:hover {
+  color: var(--color-hover);
 }
 
-.description-dashboard {
-  margin: 0 auto;
-  width: 50%;
+nav .dropdown:hover .dropdown-sub {
+  display: block;
 }
 
-section#map-dashboard {
-  height: 60vh;
-  padding: 0 0 15vh;
+/* 
+  -----------
+   INDEX.PHP
+  -----------
+*/
+
+section#top-dashboard {
+  height: 85vh;
+  padding-top: 0;
 }
 
-section#map-dashboard div#map {
-  margin: 5vh 12.5vw 0;
+section#top-dashboard h1:first-of-type {
+  color: var(--color-theme-primary);
+  font-size: 3.5rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-/* MOBILE OPTIMIZATIONS */
-
-@media only screen and (max-width: 1100px)  {
-  /* UNIVERSAL */
-  #scan-manager *,
-  #user-manager *,
-  #users-manager *,
-  #user-create *,
-  #scan-confirm *,
-  #card-manager *, 
-  #scan *,
-  #cards-manager * {
-    word-wrap: break-word;
-    font-size: 50px;
-  }
-  
-  #user-manager,
-  #card-manager,
-  #scan,
-  #cards-manager {
-    font-size: 50px;
-  }
-
-  input[type="email"],
-  input[type="password"] {
-    width: 90%;
-    height: 6vh;
-    font-size: 60px;
-  }
-
-  #login-submit {
-    width: 100%;
-    height: 6vh;
-    font-size: 50px;
-  }
-
-  a.button,
-  input[type="submit"] {
-  background-color: white;
-  border: 0.1em solid white;
-  border-radius: 0.12em;
-  box-sizing: border-box;
-  color: black;
-  display: inline-block;
-  font-family: "Viga", sans-serif;
-  font-weight: 300;
-  font-size: 70px;
-  margin: 1em 0.3em 0.3em 0;
-  padding: 0.35em 1.2em;
-  text-decoration: none;
-  text-align: center;
-  width: 75%;
-  height: 10vh;
-  transition: all 0.2s;
-}
-
-
-  /* NAVIGATION */
-nav {
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  height: 8vh;
-}
-
-nav.navigation div {
-  display: flex;
-  justify-content: flex-start;
-}
-
-nav.navigation a {
-  color: black;
-  font-size: 50px;
-  margin: 1vh 2vw 1vh 1vw;
-  text-align: center;
-  text-decoration: none;
-}
-
-nav.navigation #link-dashboard-nav {
-  color: black;
-  margin-right: 3vw;
-}
-
-/* INDEX.PHP */
-.header-dashboard {
-  color: black;
-  font-size: 100px;
-  text-align: center;
-}
-
-.description-dashboard {
-  margin: 0 auto;
-  font-size: 60px;
-  width: 100%;
-}
-
-section#map-dashboard {
-  height: 60vh;
-  padding: 0 0 15vh;
-}
-
-section#map-dashboard div#map {
-  margin: 5vh 12.5vw 0;
-}
+section#top-dashboard h1:nth-of-type(2) {
+  margin-top: 0;
+  padding-top: 0;
 }
