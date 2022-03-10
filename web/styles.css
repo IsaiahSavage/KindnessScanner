@@ -9,19 +9,21 @@
 :root {
   /* COLORS */
   --color-theme-primary: #b3cdff;
-  --color-navbar-primary: #b3cdff;
+  --color-theme-secondary: #000;
+  --color-theme-tertiary: #fff;
+  --color-navbar-background: #b3cdff;
   --color-button-background: #b3cdff;
-  --color-hover: #ffffff;
+  --color-hover: #fff;
   --font-color-button: #000;
   /* FONT SIZES */
   --font-size-large: 3rem;
   --font-size-medium: 1.75rem;
   --font-size-small: 1rem;
-  --font-size-section-header: var(--font-size-large);
   --font-size-button: var(--font-size-medium);
   --font-size-map-header: 2rem;
   --font-size-map-link: var(--font-size-small);
   --font-size-map-description: var(--font-size-small);
+  --font-size-section-header: var(--font-size-large);
 }
 
 /* 
@@ -36,7 +38,6 @@
 }
 
 html {
-  overflow-y: scroll;
   scroll-behavior: smooth;
 }
 
@@ -55,7 +56,8 @@ p {
 }
 
 header {
-  background-color: var(--color-theme-primary);
+  background-color: var(--color-navbar-background);
+  box-shadow: 0 5px 5px -5px #00000033;
   display: flex;
   flex-direction: column;
   min-height: 10vh;
@@ -70,6 +72,7 @@ header hr {
   display: none;
 }
 
+/* SECTIONS */
 section {
   color: #000;
   display: flex;
@@ -189,7 +192,7 @@ nav li a:hover {
 /* DROPDOWNS */
 
 nav .dropdown-sub {
-  background-color: var(--color-navbar-primary);
+  background-color: var(--color-navbar-background);
   display: none;
   padding-top: 1rem;
   position: absolute;
@@ -219,7 +222,7 @@ section#top-dashboard {
   padding-top: 0;
 }
 
-section#top-dashboard h1:first-of-type {
+section#top-dashboard .section-header {
   color: var(--color-theme-primary);
   font-size: 3.5rem;
   margin-bottom: 0;
@@ -230,3 +233,9 @@ section#top-dashboard h1:nth-of-type(2) {
   margin-top: 0;
   padding-top: 0;
 }
+
+/* 
+  -------------------
+   CARDS_MANAGER.PHP
+  -------------------
+*/
